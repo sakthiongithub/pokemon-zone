@@ -1,0 +1,79 @@
+<div class="container row set-middle">
+
+        <!-- Slider -->
+        <div>
+        
+        <!-- Header -->
+        <div class="row align-items-center mb-7">
+          <div class="col-12 col-md">
+      
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb mb-md-0 font-size-xs text-gray-400">
+              <li class="breadcrumb-item">
+                <a class="text-gray-400" href="index.html">Home</a>
+              </li>
+              <li class="breadcrumb-item active">
+                Pokemon Items
+              </li>
+            </ol>
+      
+          </div>
+          <div class="col-3 col-md-auto">
+      
+            <!-- Search -->
+            <label>Search : </label>
+            <input type="text" [(ngModel)]="terms" placeholder="Serach any fields"/>
+
+      
+          </div>
+          <div class="col-3 col-md-auto">
+      
+            <!-- Select -->
+            <label>Sort By : </label>
+            <select [(ngModel)]="orderByTerm" (change)="onSortBy(orderByTerm)">
+                <option [value]="i" *ngFor="let i of sortItems">{{i}}</option>
+            </select>
+      
+          </div>
+          <div class="col-3 col-md-auto">
+      
+            <!-- Select -->
+            <label>Items : </label>
+            <select [(ngModel)]="selectedItem" (change)="onChangeObj(selectedItem)">
+                <option [value]="i" *ngFor="let i of itemsPerPage">{{i}}</option>
+            </select>
+      
+          </div>
+          <div class="col-3 col-md-auto">
+              <app-pagination [previous]="allowPrev" [next]="allowNext" (paginationEvent)=paginationEvent($event)></app-pagination>
+            </div>
+        </div>
+        <!-- Products -->
+        
+        <div class="row">
+          <div class="col-6 col-md-4 my-2" *ngFor="let item of products?.results  | search:terms | orderBy: orderByTerm">
+      
+            <!-- Card -->
+            <div class="card mb-7">
+      
+              <!-- Body -->
+              <div class="card-body px-0 text-center">
+      
+                <!-- Category -->
+                <div class="font-size-xs">
+                  <strong>{{item?.name}}</strong>
+                </div>
+      
+                <!-- Title -->
+                <div class="font-weight-bold my-3">
+                   <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/detail', item.productId]" [queryParams]="{ productId: item.productId}">
+                    View
+                   </button> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <app-pagination [previous]="allowPrev" [next]="allowNext" (paginationEvent)=paginationEvent($event)></app-pagination>
+      </div>

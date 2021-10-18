@@ -1,0 +1,21 @@
+<div class="container">
+<a href="#">Back</a>
+<h4 class="my-5">Abilities and its details</h4>
+<div class="container row my-5">
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of productDetails?.abilities">{{item?.ability?.name}}</li>
+          </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="thumbnails">
+    
+            <img src="{{productDetails?.sprites?.front_default}}" class="rounded float-left" alt="Front Default">
+            <img src="{{productDetails?.sprites?.front_shiny}}" class="rounded float-left" alt="Front Shiny">
+            <img src="{{productDetails?.sprites?.back_shiny}}" class="rounded float-left" alt="Back Shiny">
+            <img src="{{productDetails?.sprites?.back_default}}" class="rounded float-left" alt="Back Default">
+        </div>
+    </div>
+</div>
+
+</div>
